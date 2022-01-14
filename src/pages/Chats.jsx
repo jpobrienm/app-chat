@@ -5,22 +5,24 @@ import {database} from "../service/firebase";
 
 const Chats = () =>{
 
-    const [chats, setChats] = useState({
+    const initialState = {
         user: firebase.auth().currentUser,
         chats: [],
         content: "",
         readError: null,
         writeError: null,
         loadingChats: false,
-    })
+    }
+
+    const [chats, setChats] = useState(initialState)
+    const [auth, setAuth] = useState({authenticated: false, loading: true})
 
     const myRef = createRef();
+    const authRef = useRef(false)
 
     const componentDidMount = () =>{
         setChats({...chats, readError: null, loadingChats: true})
-
         const chatArea = myRef.current;
-
         try{
             database.ref("chats").on("value", (snapshot) =>{
                 let dbChats = []
@@ -69,9 +71,16 @@ const Chats = () =>{
         }/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`;
     }
 
+
     useEffect(() =>{
-        componentDidMount()
-    }, [chats.loadingChats, chats.content])
+        if(!authRef.current){
+            firebase.auth().onAuthStateChanged( (response) =>{
+                componentDidMount()
+                authRef.current = true
+            })
+        }
+    }, [authRef.current])
+
 
     return(
         <>
@@ -85,7 +94,7 @@ const Chats = () =>{
                 )}
                 {chats && chats.chats.map(chat =>{
                     return (
-                        <p
+                        <div
                             key={chat.timestamp}
                             className="chat-bubble"
                         >
@@ -96,7 +105,7 @@ const Chats = () =>{
                             <span className="chat-time float-right">
                     {formatTime(chat.timestamp)}
                   </span>
-                        </p>
+                        </div>
                     );
                 })
                 }
@@ -119,7 +128,7 @@ const Chats = () =>{
                     </button>
                 </form>
                 <div className="py-5 mx-3">
-                    Loggeado como:{" "}
+                    Usuario actual:{" "}
                     <strong className="text-info">{chats.user.email}</strong>
                 </div>
             </div>

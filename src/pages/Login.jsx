@@ -1,13 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import "../styles/Login.css"
 import {useState} from "react";
 import {app, github, google} from "../service/firebase";
-import { useNavigate } from "react-router-dom"
+import firebase from "firebase/compat/app";
 
 const Login = () => {
 
     const [user, setUser] = useState({error: null, email:null})
     const navigate = useNavigate();
+
+    console.log(firebase.auth().currentUser)
 
     const loginWithGoogle = () => {
         try{
@@ -19,7 +21,6 @@ const Login = () => {
         } catch (error){
             setUser({...user, error:error.message})
         }
-        console.log(user)
     }
 
     const loginWithGithub = () => {
