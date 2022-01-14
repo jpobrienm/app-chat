@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site":"chat-app123-7d35c",
     "public": "build",
     "ignore": [
       "firebase.json",
