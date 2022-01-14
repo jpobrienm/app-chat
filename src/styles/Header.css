@@ -1,0 +1,20 @@
+.header{
+    width:100%;
+    height: auto;
+	overflow:hidden;
+	background:#252932;
+	margin-bottom:20px;
+    padding-bottom: 1%;
+    padding-top: 1%;
+}
+
+.item{
+    color: aliceblue;
+    font-size: xx-large;
+    display:inline-block;
+    padding-left: 2%;
+}
+
+.item:link{
+    text-decoration: none;
+}

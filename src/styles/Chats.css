@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya&display=swap');
+
+.sendbox{
+    overflow:hidden;
+    margin: auto;
+    margin-top: 2%;
+    padding: 5px;
+    width: 50%;
+    text-align: left;
+    font-size: larger;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    box-shadow: -4px 4px teal;
+}
+
+.messageBox{
+    margin: auto;
+    margin-top: 2%;
+    height: 40vh;
+    width: 50%;
+    overflow-y: scroll;
+    text-align: center;
+    font-size: larger;
+    background-color: #92A9BD;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    box-shadow: -4px 4px teal;
+}
+
+.message{
+    width: 70%;
+    padding-left: 1%;
+    font-size: large;
+    border-radius: 5px;
+    margin-left: 2%;
+    display:inline-block;
+    border: none;
+}
+
+.message:focus{
+    outline: none;
+}
+
+.chat-area {
+    padding: 20px;
+    height: 400px;
+    overflow-y: scroll;
+    background-color: #f1f7f8;
+    width: 80vh;
+    margin-bottom: 10px;
+}
+
+.chat-area .chat-bubble {
+    background-color: #ecb6b8;
+    padding: 20px;
+    border-radius: 4px;
+    max-width: 300px;
+    word-wrap: break-word;
+    box-shadow: 3px 3px 2px 2px #ccc;
+}
+
+.chat-bubble{
+    font-size: 14px;
+    color: #ffffff;
+    background: #347c7c;
+    text-align: right;
+    margin: 2px;
+    padding: 4px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+
+}
+
+.chat-area .chat-bubble.current-user {
+    margin-left: auto;
+    background-color: #c1f5ee;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.myP{
+    margin: 1px
+}
